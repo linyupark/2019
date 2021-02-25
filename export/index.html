@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>2019 前端分享</title>
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- REVEAL CSS-->
+  <link rel="stylesheet" href="libs/reveal.js/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/reveal.css">
+  
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/css/theme/Beige.css" id="theme">
+  
+  
+  <link rel="stylesheet" href="libs/reveal.js/3.8.0/plugin/title-footer/title-footer-mod.css" />
+
+  <!-- MERMAID-->
+  <script src="libs/reveal.js/3.8.0/plugin/mermaid/mermaid.min.js"></script>
+  <style>
+  .mermaid {
+    font-size: 0.5em;
+  }
+  </style>
+
+  <style>
+    [class*=task-list-item] {
+    min-height: 22px;
+    margin-top: 6px!important;
+    margin-bottom: 6px!important;
+    padding-left: 0;
+    list-style: none;
+}
+
+[class*=task-list-item]>input:first-child {
+    position: absolute!important;
+    opacity: 0;
+    margin: 0;
+}
+[class*=task-list-item]>label {
+    padding-left: 29px!important;
+    min-height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.task-list-item>input:first-child:checked+input[type=hidden]+label::before, .task-list-item>input:first-child:checked+label::before {
+    background-color: #ecf0f1;
+    border-color: #ecf0f1;
+}
+
+[class*=task-list-item]>input:first-child+input[type=hidden]+label::before, [class*=task-list-item]>input:first-child+label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #D3CFC8;
+    border-radius: 0;
+    margin-left: -29px;
+}
+
+
+[class*=task-list-item]>input:first-child:checked+input[type=hidden]+label::after, [class*=task-list-item]>input:first-child:checked+label::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-left: none;
+    border-top: none;
+    transform: translate(7.75px,4.5px) rotate(45deg);
+    -ms-transform: translate(7.75px,4.5px) rotate(45deg);
+}
+
+
+.task-list-item>input:first-child:checked+input[type=hidden]+label::after, .task-list-item>input:first-child:checked+label::after {
+    border-bottom-color: #95a5a6;
+    border-right-color: #95a5a6;
+}
+  </style>
+
+  <!-- Theme used for syntax highlighting of code -->
+  
+  <link rel="stylesheet" href="libs/highlight.js/9.12.0/atom-one-dark.css">
+  
+
+  
+  
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'libs/reveal.js/3.8.0/css/print/pdf.css' : 'libs/reveal.js/3.8.0/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <style>
+    /* Solarized Light theme */
+     .line {
+      display: block;
+    }
+    
+
+    .line.focus {
+      background: #fdf6e3;
+      color: #657b83;
+    }
+
+/*
+    .line.focus .hljs-comment,
+    .line.focus .hljs-quote {
+      color: #93a1a1;
+    }
+
+    .line.focus .hljs-keyword,
+    .line.focus .hljs-selector-tag,
+    .line.focus .hljs-addition {
+      color: #859900;
+    }
+
+    .line.focus .hljs-number,
+    .line.focus .hljs-string,
+    .line.focus .hljs-meta .hljs-meta-string,
+    .line.focus .hljs-literal,
+    .line.focus .hljs-doctag,
+    .line.focus .hljs-regexp {
+      color: #2aa198;
+    }
+
+    .line.focus .hljs-title,
+    .line.focus .hljs-section,
+    .line.focus .hljs-name,
+    .line.focus .hljs-selector-id,
+    .line.focus .hljs-selector-class {
+      color: #268bd2;
+    }
+
+    .line.focus .hljs-attribute,
+    .line.focus .hljs-attr,
+    .line.focus .hljs-variable,
+    .line.focus .hljs-template-variable,
+    .line.focus .hljs-class .hljs-title,
+    .line.focus .hljs-type {
+      color: #b58900;
+    }
+
+    .line.focus .hljs-symbol,
+    .line.focus .hljs-bullet,
+    .line.focus .hljs-subst,
+    .line.focus .hljs-meta,
+    .line.focus .hljs-meta .hljs-keyword,
+    .line.focus .hljs-selector-attr,
+    .line.focus .hljs-selector-pseudo,
+    .line.focus .hljs-link {
+      color: #cb4b16;
+    }
+
+    .line.focus .hljs-built_in,
+    .line.focus .hljs-deletion {
+      color: #dc322f;
+    }
+
+    .line.focus .hljs-formula {
+      background: #eee8d5;
+    }
+
+    .line.focus .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .line.focus .hljs-strong {
+      font-weight: bold;
+    }
+
+    .yellow-slide .line.focus:nth-child(2) {
+      background: yellow;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      font-size: 70%;
+    }
+    */
+
+    .reveal .slides section .fragment.current-only {
+      visibility: visible;
+      display: none;
+    }
+
+    .reveal .slides section .fragment.current-only.current-fragment {
+      display: block;
+    }
+
+/*
+    .line {
+      display: block;
+    }
+*/
+    .line.focus {
+       opacity: 1.0;
+    } 
+
+    /* .hljs {
+      background: none;
+    } */
+
+    /* .reveal pre {
+      width: 98%;
+      margin: 0px;
+      box-shadow: none;
+    }
+
+    .reveal pre code {
+      font-size: 1.2em;
+      line-height: 1.2;
+      border-radius: 10px;
+      max-height: 60vh !important;
+      overflow: hidden !important;
+    } */
+
+    @media (device-width: 100vw) and (device-height: 100vh) {
+      .reveal pre code {
+        max-height: 50vh !important;
+      }
+    }
+
+    #logo img {
+      max-height: 3.5em;
+      max-width: none;
+      min-width: 50px;
+    }
+
+    .reveal .slides section .code-presenting-annotation {
+      color: white;
+      background: black;
+      padding: 0px 15px;
+      border-radius: 15px;
+      opacity: 0.75 !important;
+      font-size: 50% !important;
+    }
+  </style>
+  <script>
+    if (window.location.search.match(/print-pdf-now/gi)) {
+      window.print();
+    }
+  </script>
+</head>
+
+<body>
+  
+<div id="logo" style="position: fixed; top: 20px; left: 20px; z-index: 1">
+    <img src="http://git.cairenhui.com/uploads/-/system/appearance/logo/1/logo.png" />
+</div>
+
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-前端年度分享" class="anchor" href="#前端年度分享" aria-hidden="true"></a>前端年度分享</h2>
+<p style="font-size:36px;color:#999">微服务 · Docker</p>
+<p><br><br></p>
+<a href="mailto://linyu0710@cairenhui.com">
+  📩
+  linyu0710@cairenhui.com
+</a>
+<p>🍼 🚴 🏀 📷</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-回顾" class="anchor" href="#回顾" aria-hidden="true"></a>回顾</h2>
+<p>Web 开发</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p>巨石 (Monolith)</p>
+<p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/QQ20191216-112133@2x.png" alt="" style="width:80%;border-radius:15px"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p>前后端分离 (Frontend &amp; Backend)</p>
+<p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/QQ20191216-122420@2x.png" alt="" style="width:80%;border-radius:15px"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p>后端微服务 (Microservice)</p>
+<p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/QQ20191216-123936@2x.png" alt="" style="width:80%;border-radius:15px"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-回顾-1" class="anchor" href="#回顾-1" aria-hidden="true"></a>回顾</h2>
+<p>前端开发</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/js-modules.png" alt="" style="width:90%;border-radius:15px"></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content--why-模块化" class="anchor" href="#-why-模块化" aria-hidden="true"></a>🤔 Why 模块化?</h3>
+<br>
+<p class="fragment">🚫 浏览器不支持</p>
+<p class="fragment">🍣 代码拆分复用</p>
+<p class="fragment">🤝 管理依赖关系</p>
+<p class="fragment">🚥 按序加载资源</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p>👽 高科技</p>
+<p>⬇</p>
+<p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/module-bundlers.png" alt="" style="width:80%;border-radius:15px"></p>
+<p>⬇</p>
+<p>😀 接地气</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content--又why工程化打包？" class="anchor" href="#-又why工程化打包？" aria-hidden="true"></a>🤔 又Why工程化打包？</h3>
+<br>
+<p class="fragment">🙏 文件合并减少请求数</p>
+<p class="fragment">💡 变更文件名缓存控制</p>
+<p class="fragment">📚 语法转译适配多平台</p>
+<p class="fragment">🍻 优化压缩个性化配置</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/QQ20191216-152455@2x.png" alt="" style="width:80%;border-radius:15px"></p>
+<p>👬 <a href="http://linyupark.github.io/projects/storybook-crh-vue/">CRH Vue Components</a></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content--叒why-ui组件化？" class="anchor" href="#-叒why-ui组件化？" aria-hidden="true"></a>🤔 叒Why UI组件化？</h3>
+<br>
+<p class="fragment">🚫 浏览器支持少且兼容性较差</p>
+<p class="fragment">🙅 远离<code>jQuery</code>命令式低效编程</p>
+<p class="fragment">💎 结合UI模块化更有效地复用</p>
+<p class="fragment">💪 解耦程度更高便于单元测试</p>
+
+            </section>
+    
+
+
+
+    
+        <section data-background="http://linyu.dynv6.net:9001/images/ppt/mircofed/8c1001e93901213f59f4f4e259e736d12e2e95cd.gif">
+            
+            <!-- .slide: data-background="http://linyu.dynv6.net:9001/images/ppt/mircofed/8c1001e93901213f59f4f4e259e736d12e2e95cd.gif" -->
+<div style="background: #D2593E; color: #fff; width: 250px; height: 250px; border-radius: 50%; text-align: center; position: absolute; left: 18%; padding: 20px; opacity: .9; box-shadow: 0 0 10px #000;">
+  <br>
+  组织
+  <br>
+  <p><small>模块，组件</small></p>
+</div>
+<div style="background: #617A7F; color: #fff; width: 250px; height: 250px; border-radius: 50%; text-align: center; position: absolute; right: 18%; top: 190px; padding: 20px; opacity: .9; box-shadow: 0 0 10px #000;">
+  <br>
+  优化
+  <br>
+  <p><small>压缩，代码分割，动态加载</small></p>
+</div> 
+<div style="background: #A8AB66; color: #fff; width: 250px; height: 250px; border-radius: 50%; text-align: center; padding: 20px; position: absolute; left: 20%; top: 380px; opacity: .9; box-shadow: 0 0 10px #000;">
+  <br>
+  生产
+  <br>
+  <p><small>打包，共享库CDN，自动脚本CLI</small></p>
+</div>
+            </section>
+    
+
+
+
+    
+        <section data-background="http://linyu.dynv6.net:9001/images/ppt/mircofed/9f510fb30f2442a7eaa460acdc43ad4bd1130214.gif">
+            
+            <!-- .slide: data-background="http://linyu.dynv6.net:9001/images/ppt/mircofed/9f510fb30f2442a7eaa460acdc43ad4bd1130214.gif" -->
+<div style="background: #444; color: #fff; width: 250px; height: 250px; border-radius: 50%; text-align: center; position: absolute; left: 18%; padding: 20px; opacity: .9; box-shadow: 0 0 10px #000;">
+  <br>
+  🌲🌲🌲
+  <br>
+  成长
+</div>
+<div style="background: #444; color: #fff; width: 250px; height: 250px; border-radius: 50%; text-align: center; position: absolute; right: 18%; top: 190px; padding: 20px; opacity: .9; box-shadow: 0 0 10px #000;">
+  <br>
+  🍄🍄🍄
+  <br>
+  增多
+  <br>
+  🐵🐵🐵
+</div> 
+<div style="background: #444; color: #fff; width: 250px; height: 250px; border-radius: 50%; text-align: center; padding: 20px; position: absolute; left: 20%; top: 380px; opacity: .9; box-shadow: 0 0 10px #000;">
+  <br>
+  ✨✨
+  <br>
+  库✨框架
+</div>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-微前端" class="anchor" href="#微前端" aria-hidden="true"></a>微前端</h3>
+<p><img src="https://pic4.zhimg.com/v2-369aff8f4b18636dd33e2f26641d206c_1200x500.jpg" alt=""></p>
+<p style="font-size:36px;color:#999">😇 既然服务端有微服务，前端为什么不能有？？</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-micro-优势" class="anchor" href="#micro-优势" aria-hidden="true"></a>Micro 优势</h2>
+<br>
+<p class="fragment">🚤 船小好掉头技术重构不用愁</p>
+<p class="fragment">💴 不同业务选合适的技术架构避免浪费 (App Shell)</p>
+<p class="fragment">💪 严格业务划分问题定位更快捷</p>
+<p class="fragment">🤞 独立部署自动化测试更新迭代不拖沓</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/verticals-headline.png" alt="" style="width:80%;border-radius:15px"></p>
+<p>小型自治服务集群</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/QQ20191217-141407@2x.png" alt="" style="width:80%;border-radius:15px"></p>
+<p>构建大型复杂应用 (App shell)</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-场景分析" class="anchor" href="#场景分析" aria-hidden="true"></a>场景分析</h2>
+<br>
+<table style="font-size:28px">
+<thead>
+<tr>
+<th>单实例 ✔</th>
+<th>多实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同页面单应用</td>
+<td>同页面混合多应用</td>
+</tr>
+<tr>
+<td>具备完整应用生命周期</td>
+<td>适合组件业务封装而非应用</td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-单例方案" class="anchor" href="#单例方案" aria-hidden="true"></a>单例方案</h2>
+<br>
+<table style="font-size:28px">
+<thead>
+<tr>
+<th>现代 ✔</th>
+<th>传统 (体验差通讯难)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注册路由 混合 SPA</td>
+<td>整页跳转</td>
+</tr>
+<tr>
+<td><a href="https://single-spa.js.org/">single-spa</a> · <a href="https://github.com/umijs/qiankun">qiankun</a> ✔</td>
+<td>IFrame + postMessage</td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/QQ20191219-165208-HD.gif" alt=""></p>
+<p style="font-size:28px">技术栈无关 ✔ 独立开发部署 ✔ 独立运行时 ✔</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content--code" class="anchor" href="#-code" aria-hidden="true"></a>🌰 code</h3>
+<div style="font-size:24px" class="block">
+<pre><code class="language-javascript">import * as Vue from &quot;vue&quot;;
+import App from &quot;./App.vue&quot;;
+import &quot;./main.css&quot;;
+
+import {
+  registerMicroApps,
+  setDefaultMountApp,
+  runAfterFirstMounted,
+  start
+} from &quot;qiankun&quot;;
+
+window.Emitter = new Vue();
+
+new Vue({
+  el: &quot;#root&quot;,
+  render: h =&gt; h(App)
+});
+
+function render({ appContent, loading }) {
+  document.querySelector(&quot;#loading&quot;).style.display = loading
+    ? &quot;block&quot;
+    : &quot;none&quot;;
+}
+
+/** 注册所有微应用 */
+registerMicroApps(
+  [
+    {
+      // Vue 应用
+      name: &quot;AppVue&quot;,
+      entry: &quot;http://localhost:8081&quot;,
+      render,
+      activeRule: () =&gt; {
+        return ~location.hash.search(&quot;#/app-vue&quot;);
+      }
+    },
+    {
+      // React 应用
+      name: &quot;AppReact&quot;,
+      entry: &quot;http://localhost:8082&quot;,
+      render,
+      activeRule: () =&gt; {
+        return ~location.hash.search(&quot;#/app-react&quot;);
+      }
+    }
+  ],
+  {
+    beforeLoad: [
+      app =&gt; {
+        console.log(&quot;应用加载前&quot;, app);
+      }
+    ],
+    beforeMount: [
+      app =&gt; {
+        console.log(&quot;应用挂载前&quot;, app);
+        window.Emitter.$emit('app.mounted', app.name);
+      }
+    ],
+    afterUnmount: [
+      app =&gt; {
+        console.log(&quot;应用卸载后&quot;, app);
+        document.getElementById('container').innerHTML = '&lt;h3&gt;微前端+docker部署展示&lt;/h3&gt;';
+      }
+    ]
+  }
+);
+
+// setDefaultMountApp(&quot;/#/app-vue&quot;);
+// runAfterFirstMounted(() =&gt; {
+//   console.info(&quot;首个应用挂载完毕&quot;);
+// });
+
+start();
+</code></pre>
+<p></p>
+</div>
+<div style="font-size:18px" class="block">
+<p><a href="https://github.com/umijs/qiankun">阿里乾坤</a> |
+<a href="http://git.cairenhui.com/openx/microfed-bootstrap">积分商城活动服务 app shell</a></p>
+</div>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-mfe开发部署挑战" class="anchor" href="#mfe开发部署挑战" aria-hidden="true"></a>MFE开发部署挑战</h2>
+<br>
+<ul>
+<li>
+<p>操作系统不同</p>
+</li>
+<li>
+<p>node版本不同</p>
+</li>
+<li>
+<p>全局包遗漏或版本不同</p>
+</li>
+<li>
+<p>端口占用状况不同</p>
+</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/docker_logo_media_social_170.66666666667px_1213006_easyicon.net.png" alt="" style="border:none;box-shadow:none"></p>
+<h3><a id="user-content-docker-构建开发部署环境" class="anchor" href="#docker-构建开发部署环境" aria-hidden="true"></a>Docker 构建开发部署环境</h3>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-简介" class="anchor" href="#简介" aria-hidden="true"></a>简介</h3>
+<p><img src="http://linyu.dynv6.net:9001/images/ppt/mircofed/095016afpafos1zcan1ic3.jpg" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3><a id="user-content-实践" class="anchor" href="#实践" aria-hidden="true"></a>实践</h3>
+<p>将现有项目转为基于 <code>Docker</code> 环境开发</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-dcokerfile" class="anchor" href="#dcokerfile" aria-hidden="true"></a>Dcokerfile</h2>
+<pre><code class="language-dockerfile"># 必填 指定基础镜像 node版本在这里最好统一
+FROM node:12.13-alpine
+
+# 可跟 项目版本一致
+LABEL version=&quot;1.0&quot;
+
+# 可选 维护人
+LABEL maintainer=&quot;&lt;linyupark@gmail.com&gt;&quot;
+
+# 可选 说明
+LABEL description=&quot;Docker Demo&quot;
+
+# 将项目文件导入工作目录
+COPY . /data/
+
+# 指定命令运行目录
+WORKDIR /data
+
+# 暴露项目会用到的端口
+EXPOSE 3000
+
+# 创建时安装依赖
+RUN \
+npm config set registry https://registry.npm.taobao.org &amp;&amp; \
+npm install
+
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-docker-compose" class="anchor" href="#docker-compose" aria-hidden="true"></a>docker-compose</h2>
+<pre><code class="language-yaml">version: '3'
+services: 
+  app-shell:
+    # dockerfile 位置
+    build: ./app-shell
+    # 挂载卷
+    volumes: 
+      - ./app-shell/src:/data/src
+    # 容器对应本地映射端口
+    ports:
+      - &quot;8080:8080&quot;
+    # 自启动服务
+    # restart: always
+  app-vue:
+    # dockerfile 位置
+    build: ./app-vue
+    # 挂载卷
+    volumes: 
+      - ./app-vue/src:/data/src
+    # 容器对应本地映射端口
+    ports:
+      - &quot;8081:8081&quot;
+
+    # 自启动服务
+    # restart: always
+  app-react:
+    # dockerfile 位置
+    build: ./app-react
+    # 挂载卷
+    volumes: 
+      - ./app-react/src:/data/src
+    # 容器对应本地映射端口
+    ports:
+      - &quot;8082:8082&quot;
+    # 自启动服务
+    # restart: always
+</code></pre>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2><a id="user-content-演示提问" class="anchor" href="#演示提问" aria-hidden="true"></a>演示&amp;提问</h2>
+<p>THANKS</p>
+
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  <script src="libs/reveal.js/3.8.0/lib/js/head.min.js"></script>
+  <script src="libs/reveal.js/3.8.0/js/reveal.js"></script>
+
+  <script>
+
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+
+        controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'faded',
+        progress: true,
+        slideNumber: false,
+        history: true,
+        keyboard: true,
+        overview: true,
+        center: true,
+        touch: true,
+        loop: false,
+        rtl: false,
+        shuffle: false,
+        fragments: true,
+        fragmentInURL: false,
+        embedded: false,
+        help: true,
+        showNotes: false,
+        autoPlayMedia: false,
+        autoSlide: 0,
+        autoSlideStoppable: true,
+        autoSlideMethod: Reveal.navigateNext,
+        defaultTiming: 120,
+        mouseWheel: false,
+        hideAddressBar: true,
+        previewLinks: false,
+        transition: 'convex',
+        transitionSpeed: 'default',
+        backgroundTransition: 'default',
+        viewDistance: 3,
+        parallaxBackgroundImage: '',
+        parallaxBackgroundSize: '',
+        parallaxBackgroundHorizontal: 0,
+        parallaxBackgroundVertical: 0,
+        display: 'block',
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            // { src: 'libs/reveal.js/3.8.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+            // { src: 'libs/reveal.js/3.8.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+            { src: 'libs/reveal.js/3.8.0/plugin/notes/notes.js', async: true },
+            { src: 'libs/reveal.js/3.8.0/plugin/chart/Chart.min.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/chart/csv2chart.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/embed-tweet/embed-tweet.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/math/math.js', async: true },
+            { src: 'libs/highlight.js/9.12.0/highlight.js', async: true },
+            { src: 'libs/reveal.js/3.8.0/plugin/anything/anything.js' },
+            { src: 'libs/reveal.js/3.8.0/plugin/mermaid/mermaid.min.js', async: true, callback: function() {mermaid.initialize({startOnLoad:false})} },	
+
+           
+        { src: 'libs/reveal.js/3.8.0/plugin/search/search.js', async: true },
+           
+
+           
+        { src: 'libs/reveal.js/3.8.0/plugin/zoom-js/zoom.js', async: true },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/chalkboard/chalkboard.js' },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/menu/menu.js' },
+            
+
+            
+        { src: 'libs/reveal.js/3.8.0/plugin/title-footer/title-footer.js', async: true, callback: function () { title_footer.initialize(); } },
+            
+
+        {
+            src: 'libs/highlight.js/9.12.0/reveal-code-focus-1.0.0-mod.js',
+            async: true,
+            callback: function () {
+                RevealCodeFocus();
+            }
+        },
+            // { src: 'libs/reveal.js/3.8.0/plugin/reveal-code-focus/highlight.pack.js' },
+            // { src: 'libs/reveal.js/3.8.0/plugin/reveal-code-focus/reveal-code-focus.js', async: true, callback: function() { RevealCodeFocus(); } },
+           // {src: 'libs/reveal.js/3.8.0/plugin/line-numbers/line-numbers.js'}
+        ]
+        ,
+    keyboard: {
+        67: function () { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+        66: function () { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+        46: function () { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+        8: function () { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        68: function () { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+    },
+    math: {
+       // mathjax: 'libs/reveal.js/3.8.0/plugin/math/MathJax.js',
+             mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+    },
+    chart: {
+        defaults: {
+            global: {
+                title: { fontColor: "#FFF" },
+                legend: {
+                    position: "bottom",
+                        labels: { fontColor: "#FFF" },
+                },
+                tooltips: {
+                    labels: { fontColor: "#FFF" },
+                },
+            },
+            scale: {
+                scaleLabel: { fontColor: "#FFF" },
+                gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+                ticks: { fontColor: "#FFF" },
+            }
+        },
+        line: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"], "borderDash": [[5, 10], [0, 0]] },
+        bar: { backgroundColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+        pie: { backgroundColor: [["rgba(0,0,0,.8)", "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"]] },
+        radar: { borderColor: ["rgba(20,220,220,.8)", "rgba(220,120,120,.8)", "rgba(20,120,220,.8)"] },
+    },
+    anything: [ 
+	 {
+	  className: "mermaid"
+	 },
+	 // ...
+	],
+    menu: {
+        // Specifies which side of the presentation the menu will 
+        // be shown. Use 'left' or 'right'.
+        side: 'left',
+
+            // Specifies the width of the menu.
+            // Can be one of the following:
+            // 'normal', 'wide', 'third', 'half', 'full', or
+            // any valid css length value
+            width: 'normal',
+
+                // Add slide numbers to the titles in the slide list.
+                // Use 'true' or format string (same as reveal.js slide numbers)
+                numbers: false,
+
+                    // Specifies which slide elements will be used for generating
+                    // the slide titles in the menu. The default selects the first
+                    // heading element found in the slide, but you can specify any
+                    // valid css selector and the text from the first matching
+                    // element will be used.
+                    // Note: that a section data-menu-title attribute or an element
+                    // with a menu-title class will take precedence over this option
+                    titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+                        // If slides do not have a matching title, attempt to use the
+                        // start of the text content as the title instead
+                        useTextContentForMissingTitles: false,
+
+                            // Hide slides from the menu that do not have a title.
+                            // Set to 'true' to only list slides with titles.
+                            hideMissingTitles: false,
+
+                                // Adds markers to the slide titles to indicate the 
+                                // progress through the presentation. Set to 'false'
+                                // to hide the markers.
+                                markers: true,
+
+                                    // Specify custom panels to be included in the menu, by
+                                    // providing an array of objects with 'title', 'icon'
+                                    // properties, and either a 'src' or 'content' property.
+                                    // custom: false,
+                                    custom: [],
+                                        // Specifies the themes that will be available in the themes
+                                        // menu panel. Set to 'true' to show the themes menu panel
+                                        // with the default themes list. Alternatively, provide an
+                                        // array to specify the themes to make available in the
+                                        // themes menu panel, for example...
+                                        // [
+                                        //     { name: 'Black', theme: 'css/theme/black.css' },
+                                        //     { name: 'White', theme: 'css/theme/white.css' },
+                                        //     { name: 'League', theme: 'css/theme/league.css' }
+                                        // ]
+                                        themes: false,
+
+                                            // Specifies the path to the default theme files. If your
+                                            // presentation uses a different path to the standard reveal
+                                            // layout then you need to provide this option, but only
+                                            // when 'themes' is set to 'true'. If you provide your own 
+                                            // list of themes or 'themes' is set to 'false' the 
+                                            // 'themesPath' option is ignored.
+                                            themesPath: 'css/theme/',
+
+                                                // Specifies if the transitions menu panel will be shown.
+                                                // Set to 'true' to show the transitions menu panel with
+                                                // the default transitions list. Alternatively, provide an
+                                                // array to specify the transitions to make available in
+                                                // the transitions panel, for example...
+                                                // ['None', 'Fade', 'Slide']
+                                                transitions: false,
+
+                                                    // Adds a menu button to the slides to open the menu panel.
+                                                    // Set to 'false' to hide the button.
+                                                    openButton: true,
+
+                                                        // If 'true' allows the slide number in the presentation to
+                                                        // open the menu panel. The reveal.js slideNumber option must 
+                                                        // be displayed for this to take effect
+                                                        openSlideNumber: false,
+
+                                                            // If true allows the user to open and navigate the menu using
+                                                            // the keyboard. Standard keyboard interaction with reveal
+                                                            // will be disabled while the menu is open.
+                                                            keyboard: true,
+
+                                                                // Normally the menu will close on user actions such as
+                                                                // selecting a menu item, or clicking the presentation area.
+                                                                // If 'true', the sticky option will leave the menu open
+                                                                // until it is explicitly closed, that is, using the close
+                                                                // button or pressing the ESC or m key (when the keyboard 
+                                                                // interaction option is enabled).
+                                                                sticky: false,
+
+                                                                    // If 'true' standard menu items will be automatically opened
+                                                                    // when navigating using the keyboard. Note: this only takes 
+                                                                    // effect when both the 'keyboard' and 'sticky' options are enabled.
+                                                                    autoOpen: true,
+
+                                                                        // If 'true' the menu will not be created until it is explicitly
+                                                                        // requested by calling RevealMenu.init(). Note this will delay
+                                                                        // the creation of all menu panels, including custom panels, and
+                                                                        // the menu button.
+                                                                        delayInit: false,
+
+                                                                            // If 'true' the menu will be shown when the menu is initialised.
+                                                                            openOnInit: false,
+
+                                                                                // By default the menu will load it's own font-awesome library
+                                                                                // icons. If your presentation needs to load a different
+                                                                                // font-awesome library the 'loadIcons' option can be set to false
+                                                                                // and the menu will not attempt to load the font-awesome library.
+                                                                                loadIcons: false
+    },
+    chalkboard: {
+        toggleChalkboardButton: { left: "60px", bottom: "30px", top: "auto", right: "auto" },
+        toggleNotesButton: { left: "90px", bottom: "30px", top: "auto", right: "auto" },
+
+    }
+    });
+
+
+
+</script>
+</body>
+
+</html>
